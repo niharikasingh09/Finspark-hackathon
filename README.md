@@ -14,8 +14,15 @@ A **production-ready Feature Intelligence Framework** designed for enterprise Sa
 - Compare adoption across different customers
 - Handle both Cloud and On-Premise deployments
 - Maintain strict privacy and compliance
+  
 
 ---
+## 🌐 Live Demo
+ 
+Static front-end pages are deployed via GitHub Pages for preview purposes:
+ 
+- **Login Page:** [oorjatiwari23.github.io/finspark/login.html](https://oorjatiwari23.github.io/finspark/login.html)
+- **Demo App (LendPro):** [oorjatiwari23.github.io/finspark/demo-app/index.html](https://oorjatiwari23.github.io/finspark/demo-app/index.html)
 
 ## 🚀 Quick Start
 
