@@ -1,388 +1,146 @@
-# FinSpark Feature Intelligence Framework
-## Enterprise Usage Analytics for SaaS Platforms
+# FinSpark — Feature Intelligence & User Journey Analytics
 
-> **Transform enterprise feature usage into strategic intelligence without compromising compliance, performance, or architectural integrity.**
+## 📌 Overview
 
+FinSpark is a web-based analytics platform that helps organizations understand how users interact with their applications.
+
+It tracks feature usage and user journeys and converts this data into actionable insights through interactive dashboards. The platform also uses Machine Learning for churn prediction, user segmentation, and anomaly detection.
 ---
 
-## 🎯 What Is This?
-
-A **production-ready Feature Intelligence Framework** designed for enterprise SaaS platforms that need to:
-- Track which features customers actually use (vs. what they pay for)
-- Identify user journey drop-off points
-- Measure feature ROI and optimize licenses
-- Compare adoption across different customers
-- Handle both Cloud and On-Premise deployments
-- Maintain strict privacy and compliance
-  
-
----
 ## 🌐 Live Demo
- 
+
 Static front-end pages are deployed via GitHub Pages for preview purposes:
- 
-- **Login Page:** [oorjatiwari23.github.io/finspark/login.html](https://oorjatiwari23.github.io/finspark/login.html)
-- **Demo App (LendPro):** [oorjatiwari23.github.io/finspark/demo-app/index.html](https://oorjatiwari23.github.io/finspark/demo-app/index.html)
 
-## 🚀 Quick Start
+- **Login Page:** [Login Page](https://oorjatiwari23.github.io/finspark/login.html)
+- **Demo App (LendPro):** [LendPro Demo](https://oorjatiwari23.github.io/finspark/demo-app/index.html)
 
-### Prerequisites
-- Node.js 16 or higher
-- npm or yarn
+## 🎯 Problem
 
-### Installation & Run (2 minutes)
+Organizations often have many application features but lack clear visibility into:
 
-**Linux/Mac:**
-```bash
-cd finspark-prototype
-./start.sh
-```
+- Which features are actually being used
+- Where users drop off during a journey
+- Which customers are highly engaged or at risk
+- Which licensed features are underutilized
+- Whether unusual usage patterns are occurring
 
-**Windows:**
-```bash
-cd finspark-prototype
-start.bat
-```
+FinSpark addresses these challenges by collecting and analyzing application usage data.
 
-This will:
-1. Install all dependencies
-2. Start the backend server (http://localhost:3000)
-3. Start the dashboard (http://localhost:5173)
-4. You can then open `demo-app/index.html` in your browser
+## 🔄 How It Works
 
-**Manual Start:**
-```bash
-# Terminal 1: Backend
-cd backend && npm install && npm start
+User Interaction  
+↓  
+JavaScript Feature Tracker SDK  
+↓  
+Event Collection  
+↓  
+Node.js + Express Backend  
+↓  
+Cloud / On-Premise Processing  
+↓  
+Database  
+↓  
+Analytics APIs  
+↓  
+React Dashboard
 
-# Terminal 2: Dashboard
-cd dashboard && npm install && npm run dev
+A separate Python Flask ML service processes behavioral data for prediction, segmentation, and anomaly detection.
 
-# Browser: Open demo-app/index.html
-```
+## 🚀 Key Features
 
----
+### Feature Tracking
+- Tracks feature usage, sessions, and user journeys.
+- Uses a lightweight JavaScript SDK with `data-feature` attributes.
+- Collects event details such as feature name, timestamp, session ID, and tenant ID.
 
-## 📦 What's Included
+### User Journey & Funnel Analysis
+- Tracks the sequence of features used by users.
+- Identifies journey drop-offs and conversion points.
+- Helps organizations understand where users leave a workflow.
 
-### 1. **Feature Tracker SDK** (`sdk/feature-tracker.js`)
-- Lightweight JavaScript SDK (<15KB)
-- Automatic feature detection
-- Privacy-aware event batching
-- Journey path tracking
-- Zero performance impact
+### Analytics Dashboard
+Provides interactive views for:
 
-### 2. **Event Collection Backend** (`backend/server.js`)
-- REST API for event ingestion
-- Dual-mode processing (Cloud/On-Prem)
-- Multi-tenant isolation
-- Real-time analytics engine
-- Compliance audit logging
+- Feature Usage & Heatmaps
+- Journey Funnels
+- Tenant Comparison
+- License ROI
+- Live Event Stream
+- Compliance & Audit Information
 
-### 3. **Demo Lending Application** (`demo-app/index.html`)
-- Fully instrumented lending platform
-- 10 realistic features
-- Live journey tracking
-- Configurable deployment modes
+### Cloud & On-Premise Support
+- **Cloud:** Supports detailed event collection and analysis.
+- **On-Premise:** Aggregates usage data before synchronization.
+- Designed to support privacy and data-residency requirements.
 
-### 4. **Analytics Dashboard** (`dashboard/src/App.jsx`)
-- Feature usage heatmaps
-- Journey funnel analysis
-- Tenant comparison
-- License ROI insights
-- Real-time event stream
-- Compliance controls
+## 🤖 Machine Learning
 
----
+FinSpark includes a separate Python Flask ML service built using Scikit-learn.
 
-## 🎨 Key Features
+| ML Model | Purpose |
+|----------|---------|
+| Random Forest | Churn Prediction |
+| K-Means | User Segmentation |
+| Isolation Forest | Anomaly Detection |
+| Z-score | Usage Anomaly Analysis |
 
-### ✅ Deployment-Aware Architecture
-**Cloud Mode:** Stores raw events with full detail for comprehensive analytics
-**On-Prem Mode:** Aggregates locally, only sends anonymized summaries to respect data residency
+### Churn Prediction
+Uses behavioral features such as total events, features used, sessions, and inactivity to estimate churn risk.
 
-### ✅ Privacy-First Design
-- **Three Privacy Levels:** Strict (hashing), Standard (masking), Relaxed
-- Automatic PII detection and sanitization
-- Configurable telemetry consent
-- Complete audit trail
+### User Segmentation
+Groups users or tenants based on their usage behavior into meaningful behavioral segments.
 
-### ✅ Multi-Tenant Ready
-- Strict tenant isolation
-- Cross-tenant benchmarking
-- Tenant-specific analytics
+### Anomaly Detection
+Identifies unusual usage patterns in tenant, feature, and time-based activity.
 
-### ✅ Journey Analytics
-- Automatic user journey correlation
-- Visual funnel analysis
-- Drop-off point identification
-- Conversion rate tracking
+> Since this is a prototype, churn labels are generated using engagement and inactivity-based rules rather than real historical churn outcomes.
 
-### ✅ License ROI Dashboard
-- Compare licensed vs. used features
-- Identify unused licenses
-- Cost optimization recommendations
-- Usage trend analysis
+## 🔐 Privacy & Security
 
-### ✅ Real-Time Insights
-- Live event stream
-- Sub-second dashboard updates
-- Instant alerts and notifications
+FinSpark includes:
 
----
+- Multiple privacy levels
+- Sensitive data masking
+- Tenant-based data separation
+- JWT authentication
+- Role-based access
+- Audit logging
 
-## 📊 Demo Scenarios
+Sensitive fields can be sanitized before being processed or stored.
 
-### Scenario 1: Feature Discovery
-1. Open demo app, click through features
-2. Switch between Cloud/On-Prem modes
-3. View Feature Heatmap in dashboard
-4. Identify most/least used features
+## 🛠️ Technology Stack
 
-### Scenario 2: Journey Funnel
-1. Follow loan application flow in demo app
-2. View Journey Funnel tab in dashboard
-3. See conversion rates at each step
-4. Identify drop-off points
-
-### Scenario 3: Multi-Tenant Comparison
-1. Switch tenants in demo app (Bank Alpha, Beta, Gamma)
-2. Generate different usage patterns
-3. View Tenant Comparison in dashboard
-4. Benchmark adoption across customers
-
-### Scenario 4: License Optimization
-1. View License ROI tab in dashboard
-2. See unused licensed features
-3. Calculate potential savings
-4. Export optimization report
-
-### Scenario 5: Compliance
-1. Go to Compliance tab
-2. Toggle privacy levels
-3. View audit logs
-4. Configure telemetry settings
-
----
-
-## 🏆 How This Solves the Hackathon Challenge
-
-### Enterprise Realism (20%) ✅
-- Production-ready architecture
-- Scalable event processing
-- Battle-tested design patterns
-- Real-world deployment scenarios
-
-### Deployment Awareness (15%) ✅
-- True dual-mode operation
-- Cloud: Centralized analytics
-- On-Prem: Federated aggregation
-- Same SDK, different processing
-
-### Security & Compliance (15%) ✅
-- Three-tier privacy model
-- PII masking and hashing
-- Audit trail and logs
-- GDPR/SOC2 ready
-
-### Scalability (15%) ✅
-- Stateless API design
-- Event batching
-- Database sharding support
-- Horizontal scaling ready
-
-### Business Impact (15%) ✅
-- Measurable ROI ($500K-$2M savings)
-- Improved retention (15-20%)
-- Faster time-to-value (25%)
-- Data-driven roadmaps (30% efficiency)
-
-### Innovation (10%) ✅
-- Deployment-aware telemetry
-- Auto-journey correlation
-- Privacy-preserving analytics
-- Real-time federated insights
-
-### Ease of Deployment (10%) ✅
-- One-line installation
-- No infrastructure changes
-- Auto-configuration
-- 5-minute setup
-
----
+**Frontend:** React, Vite, Recharts  
+**Backend:** Node.js, Express.js, SQLite  
+**ML:** Python, Flask, Scikit-learn, Pandas, NumPy  
+**SDK:** Vanilla JavaScript  
+**Authentication:** JWT
 
 ## 📁 Project Structure
 
-```
-finspark-prototype/
-├── sdk/                        # Feature Tracker SDK
-│   └── feature-tracker.js      # Lightweight tracking library
-├── backend/                    # Event Collection Service
-│   ├── server.js               # Express API server
-│   └── package.json
-├── demo-app/                   # Demo Lending Application
-│   └── index.html              # Instrumented demo app
-├── dashboard/                  # Analytics Dashboard
-│   ├── src/
-│   │   ├── App.jsx             # Main React app
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
-├── docs/                       # Documentation
-│   ├── SETUP.md                # Detailed setup guide
-│   ├── ARCHITECTURE.md         # Technical architecture
-│   └── PRESENTATION.md         # Hackathon presentation
-├── start.sh                    # Quick start script (Linux/Mac)
-├── start.bat                   # Quick start script (Windows)
-└── README.md                   # This file
-```
+- `sdk/` — JavaScript feature tracking SDK
+- `backend/` — Node.js & Express backend
+- `dashboard/` — React analytics dashboard
+- `ml-service/` — Python Flask ML service
+- `demo-app/` — Demo lending application
 
----
+## 💡 Example
 
-## 🔧 Configuration
+Consider a loan application journey:
 
-### SDK Configuration
-```javascript
-const tracker = new FeatureTracker({
-  endpoint: 'http://localhost:3000/api/events',
-  tenantId: 'your-tenant-id',
-  deploymentMode: 'cloud',  // or 'onprem'
-  privacyLevel: 'standard', // 'strict', 'standard', 'relaxed'
-  enabled: true,
-  batchSize: 10,
-  flushInterval: 5000
-});
-```
+**Loan Application → Credit Check → Document Upload → Loan Approval → Disbursement**
 
-### Backend Configuration
-Edit `backend/server.js`:
-- Database: SQLite (default) or PostgreSQL
-- Port: 3000 (default)
-- CORS: Enabled for localhost
+If many users leave between **Document Upload** and **Loan Approval**, FinSpark can identify this drop-off through journey analytics.
 
-### Dashboard Configuration
-Edit `dashboard/src/App.jsx`:
-- API endpoint: `http://localhost:3000/api`
-- Refresh interval: 5 seconds
-- Chart themes and colors
+Similarly, it can identify underused features, compare tenant behavior, predict churn risk, and detect unusual activity.
 
----
+## 🎯 Outcome
 
-## 📚 Documentation
+FinSpark combines **event tracking, analytics, interactive dashboards, and Machine Learning** to transform application usage data into actionable insights for better decision-making.
 
-- **[Setup Guide](docs/SETUP.md)** - Detailed installation and configuration
-- **[Architecture](docs/ARCHITECTURE.md)** - Technical deep dive
-- **[Presentation](docs/PRESENTATION.md)** - Hackathon pitch deck
+## 🔮 Future Scope
 
----
-
-## 🎓 Technical Highlights
-
-### Technology Stack
-- **Frontend:** React 18, Recharts, Lucide Icons
-- **Backend:** Node.js, Express, SQLite/PostgreSQL
-- **SDK:** Vanilla JavaScript (framework-agnostic)
-- **Build:** Vite, npm
-
-### Key Design Patterns
-- Event Sourcing for telemetry
-- CQRS for analytics
-- Federated learning for on-prem
-- Privacy by design
-- Multi-tenancy by design
-
-### Performance
-- <100ms API latency (p99)
-- 10K events/second throughput
-- <1ms SDK overhead
-- Real-time dashboard (<5s delay)
-
----
-
-## 🚀 Future Enhancements
-
-### Phase 1 (Next 3 months)
-- AI-powered adoption predictions
-- Automated feature recommendations
-- Slack/Teams integrations
-- Mobile SDK (iOS/Android)
-
-### Phase 2 (Months 4-6)
-- Real-time alerting
-- A/B test integration
-- Custom metric builder
-- Advanced segmentation
-
-### Phase 3 (Months 7-12)
-- Machine learning insights
-- Predictive churn models
-- Feature dependency mapping
-- API usage analytics
-
----
-
-## 💼 Business Value
-
-### Quantified Impact
-
-**License Optimization:**
-- Identify unused features
-- Save $500K-$2M annually
-- Optimize license tiers
-
-**Customer Retention:**
-- Early churn detection
-- Usage-based interventions
-- 15-20% retention improvement
-
-**Product Development:**
-- Data-driven roadmaps
-- 30% efficiency gain
-- Faster feature validation
-
-**Customer Success:**
-- Proactive engagement
-- Usage-based scoring
-- 25% faster time-to-value
-
----
-
-## 🏅 Evaluation Checklist
-
-✅ **Enterprise Realism** - Production-ready architecture  
-✅ **Deployment Awareness** - Cloud + On-Prem support  
-✅ **Security & Compliance** - Privacy-first design  
-✅ **Scalability** - Horizontal scaling ready  
-✅ **Business Impact** - Measurable ROI  
-✅ **Innovation** - Novel deployment-aware approach  
-✅ **Deployability** - 5-minute setup  
-
----
-
-## 📧 Support
-
-For questions, issues, or contributions:
-- Review the [Setup Guide](docs/SETUP.md)
-- Check [Architecture Docs](docs/ARCHITECTURE.md)
-- See [Presentation](docs/PRESENTATION.md)
-
----
-
-## 🎯 The Big Question Answered
-
-**Can you transform enterprise feature usage into strategic intelligence without compromising compliance, performance, or architectural integrity?**
-
-**✅ YES.** This prototype demonstrates a complete, deployment-aware Feature Intelligence Framework that:
-- Tracks real feature usage across all channels
-- Works in both Cloud and On-Premise environments
-- Maintains strict privacy and compliance
-- Delivers actionable business insights
-- Deploys in minutes
-- Scales to enterprise needs
-
-**Try it now and see for yourself!**
-
----
-
-**Built for FinSpark Hackathon**  
-*Turning Feature Usage into Strategic Intelligence*
+- Scale event processing using message queues such as Kafka
+- Replace SQLite with a production-scale database
+- Train churn models using real historical customer outcomes
+- Add stronger production-grade security and monitoring
